@@ -17,9 +17,9 @@ import java.util.concurrent.TimeUnit;
 
 public class iOSMwebCheckoutTest {
 	
-	public static IOSDriver<MobileElement> driver;
-	public static ExtentReports report;
-	public static ExtentTest test;
+	  public static IOSDriver<MobileElement> driver;
+	  public static ExtentReports report;
+	  public static ExtentTest test;
 
 	  @BeforeTest
 	  public void beforeTest() throws MalformedURLException {
