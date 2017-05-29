@@ -23,7 +23,6 @@ public class iOSMwebCheckoutTest {
 
 	  @BeforeTest
 	  public void beforeTest() throws MalformedURLException {
-
 	      report = new ExtentReports("/Users/River_Lin/Documents/workspace/testreport/FamilyMartiOSMwebReport.html", false);
 	      test = report.startTest("Checkout Test", "首頁 > 人氣推薦商品 > 第一個產品 > 立即結帳 > 選取超商取貨付款 > 填寫資料，並選取任一個門市");
 	    
@@ -37,17 +36,11 @@ public class iOSMwebCheckoutTest {
 	      capabilities.setCapability("browserName", "Safari");
 	      driver = new IOSDriver<MobileElement>(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
 	      driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
-	      
-	      
-
 	  }
 		  
 	  @Test
 	  public void checkout() throws InterruptedException {
 	      try {
-	    	  
-	    	   
-	    	  
 	    	    driver.get("http://mart.family.com.tw");
 	    	  
 	    	    HomePage.goToOfficialRecommendPage(driver);
@@ -70,13 +63,11 @@ public class iOSMwebCheckoutTest {
 		    FamilyMartStorePage.selectStoreByStreet(driver);
 		    	
 		    PaymentInfoPage.enterEmail(driver, "rivertest62@gmail.com");
-		    	
-		    	
+		    
 		    test.log(LogStatus.PASS, "The Test Result: PASS");
 		    Thread.sleep(1000);
 		    String fileDir = Actions.takeScreenShot(driver);
-		    test.log(LogStatus.INFO, "image: " +  test.addScreenCapture(fileDir));
-	 	  
+		    test.log(LogStatus.INFO, "image: " +  test.addScreenCapture(fileDir)); 	  
 	      }
 	      
 	      catch(Exception e) {
@@ -84,8 +75,7 @@ public class iOSMwebCheckoutTest {
 	    	  test.log(LogStatus.FAIL, e.getMessage());
 	    	  String fileDir = Actions.takeScreenShot(driver);
 	    	  test.log(LogStatus.INFO, "error image: " +  test.addScreenCapture(fileDir));	    	 
-	      }
-		  
+	      }	  
 	  }
 
 	  @AfterTest
@@ -95,5 +85,4 @@ public class iOSMwebCheckoutTest {
 	      report.close();
 	      driver.quit();
 	  }
-
 }
