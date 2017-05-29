@@ -18,8 +18,8 @@ import java.util.concurrent.TimeUnit;
 public class iOSMwebCheckoutTest {
 	
 	public static IOSDriver<MobileElement> driver;
-	  public static ExtentReports report;
-	  public static ExtentTest test;
+	public static ExtentReports report;
+	public static ExtentTest test;
 
 	  @BeforeTest
 	  public void beforeTest() throws MalformedURLException {
@@ -28,13 +28,13 @@ public class iOSMwebCheckoutTest {
 	      test = report.startTest("Checkout Test", "首頁 > 人氣推薦商品 > 第一個產品 > 立即結帳 > 選取超商取貨付款 > 填寫資料，並選取任一個門市");
 	    
 	      DesiredCapabilities capabilities = new DesiredCapabilities();
-		  capabilities.setCapability("platformName", "iOS");
-		  capabilities.setCapability("platformVersion", "10.3");
-		  capabilities.setCapability("deviceName", "iPhone 7");
-		  //capabilities.setCapability("deviceName", "River iPhone");
-		  //capabilities.setCapability("udid", "Your UDID");
-		  capabilities.setCapability("autoWebview", "true");
-		  capabilities.setCapability("browserName", "Safari");
+	      capabilities.setCapability("platformName", "iOS");
+	      capabilities.setCapability("platformVersion", "10.3");
+	      capabilities.setCapability("deviceName", "iPhone 7");
+	      //capabilities.setCapability("deviceName", "River iPhone");
+	      //capabilities.setCapability("udid", "Your UDID");
+	      capabilities.setCapability("autoWebview", "true");
+	      capabilities.setCapability("browserName", "Safari");
 	      driver = new IOSDriver<MobileElement>(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
 	      driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
 	      
@@ -52,30 +52,30 @@ public class iOSMwebCheckoutTest {
 	    	  
 	    	    HomePage.goToOfficialRecommendPage(driver);
 		    	
-		    	OfficialRecommendPage.goToTop1SalePage(driver);
+		    OfficialRecommendPage.goToTop1SalePage(driver);
 		    	
-		    	SalePage.immediatelyBuy(driver);
+		    SalePage.immediatelyBuy(driver);
 		    	
-		    	LoginPage.login(driver, "account", "password");
+		    LoginPage.login(driver, "account", "password");
 		    	
-		    	ShoppingCartConfirmPage.goToPaymentAndShipmentPage(driver);
+		    ShoppingCartConfirmPage.goToPaymentAndShipmentPage(driver);
 		    	
-		    	PaymentAndShipmentPage.selectPayAtStore(driver);
-		    	PaymentAndShipmentPage.selectShipToFamilyMart(driver);
-		    	PaymentAndShipmentPage.goToPaymentInfoPage(driver);
-		    	PaymentInfoPage.enterName(driver, "林老師");
-		    	PaymentInfoPage.enterPhoneNumber(driver, "0912345678");
-		    	PaymentInfoPage.selectStore(driver);
+		    PaymentAndShipmentPage.selectPayAtStore(driver);
+		    PaymentAndShipmentPage.selectShipToFamilyMart(driver);
+		    PaymentAndShipmentPage.goToPaymentInfoPage(driver);
+		    PaymentInfoPage.enterName(driver, "林老師");
+		    PaymentInfoPage.enterPhoneNumber(driver, "0912345678");
+		    PaymentInfoPage.selectStore(driver);
 		    	
-		    	FamilyMartStorePage.selectStoreByStreet(driver);
+		    FamilyMartStorePage.selectStoreByStreet(driver);
 		    	
-		    	PaymentInfoPage.enterEmail(driver, "rivertest62@gmail.com");
+		    PaymentInfoPage.enterEmail(driver, "rivertest62@gmail.com");
 		    	
 		    	
-		    	test.log(LogStatus.PASS, "The Test Result: PASS");
-		        Thread.sleep(1000);
-		        String fileDir = Actions.takeScreenShot(driver);
-			    test.log(LogStatus.INFO, "image: " +  test.addScreenCapture(fileDir));
+		    test.log(LogStatus.PASS, "The Test Result: PASS");
+		    Thread.sleep(1000);
+		    String fileDir = Actions.takeScreenShot(driver);
+		    test.log(LogStatus.INFO, "image: " +  test.addScreenCapture(fileDir));
 	 	  
 	      }
 	      
@@ -90,9 +90,9 @@ public class iOSMwebCheckoutTest {
 
 	  @AfterTest
 	  public void afterTest() {
-		  report.endTest(test);
-		  report.flush();
-		  report.close();
+	      report.endTest(test);
+	      report.flush();
+	      report.close();
 	      driver.quit();
 	  }
 
